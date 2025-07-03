@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Max Number Finder</title>
+    <style>
+        body {
+            text-align: center;
+            margin: 50px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+        #output {
+            font-size: 20px;
+            margin-top: 20px;
+            color: tomato;
+        }
+    </style>
+</head>
+<body>
+    <h2>Enter Number :</h2>
+    <input type="text" id="numberInput" placeholder="eg.10,45,20,78">
+    <button onclick="findMax()">Submit</button>
+    <div id="output"></div>
+
+    <script>
+        function findMax() {
+            let input = document.getElementById('numberInput').value;
+            let strNumbers = input.split(',');
+            let maxNumber = null;
+
+            for (let i = 0; i < strNumbers.length; i++) {
+                let num = parseFloat(strNumbers[i].trim());
+                if (!isNaN(num)) {
+                    if (maxNumber === null || num > maxNumber) {
+                        maxNumber = num;
+                    }
+                }
+            }
+
+            if (maxNumber !== null) {
+                document.getElementById('output').innerHTML = "Max number is: " + maxNumber;
+            } else {
+                document.getElementById('output').innerHTML = 'Nikal beta, pehle valid numbers daal 😤';
+            }
+        }
+    </script>
+</body>
+</html>
